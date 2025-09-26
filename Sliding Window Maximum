@@ -1,0 +1,20 @@
+class Solution {
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        int n=nums.length;
+        int[] res=new int[n-k+1];
+        int left=0;
+        int right=0;
+        while(right<n){
+            if((right-left+1)==k){
+                int maxi=Integer.MIN_VALUE;
+                for(int i=left;i<=right;i++){
+                    maxi=Math.max(maxi,nums[i]);
+                }
+                res[left]=maxi;
+                left++;
+            }
+            right++;
+        }
+        return res;
+    }
+}
